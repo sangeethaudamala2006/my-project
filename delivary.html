@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Family Food Delivery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🍽️ Family Food Delivery</h1>
+
+    <form id="order-form">
+      <label for="user">Select User:</label>
+      <select id="user" name="user" required>
+       <option value="">-- Choose --</option>
+        <option value="mother">Mother</option>
+        <option value="father">Father</option>
+        <option value="student">Student</option>
+      </select>
+
+      <label for="meal">Choose Meal:</label>
+      <select id="meal" name="meal" required>
+        <option value="">-- Select Meal --</option>
+        <option value="rice">Rice & Chicken</option>
+        <option value="burger">Burger & Fries</option>
+        <option value="pasta">Pasta & Salad</option>
+        <option value="veg">Vegetarian Meal</option>
+      </select>
+
+      <label for="address">Delivery Address:</label>
+      <input type="text" id="address" name="address" placeholder="Enter address..." required />
+
+      <button type="submit">Submit Order</button>
+    </form>
+
+    <div id="confirmation" class="hidden"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('order-form');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const user = document.getElementById('user').value;
+      const meal = document.getElementById('meal').value;
+      const address = document.getElementById('address').value;
+
+      confirmation.innerHTML = `
+        <h3>✅ Order Confirmed!</h3>
+        <p><strong>User:</strong> ${user}</p>
+        <p><strong>Meal:</strong> ${meal}</p>
+        <p><strong>Delivery To:</strong> ${address}</p>
+      `;
+      confirmation.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
